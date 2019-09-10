@@ -1,7 +1,9 @@
-package com.sapient.microservices.tradingmicroservice;
+package com.sapient.microservice.tradingmicroservice;
 
 //counterparties, commodities ,location and market price
 public class TradeBean {
+	
+	private int id;
 	
 	private String counterParty;
 	
@@ -15,12 +17,23 @@ public class TradeBean {
 		
 	}
 	
-	public TradeBean(String counterParty, String location, String commodities, int marketPrice) {
+	public TradeBean(int id,String counterParty, String location, String commodities, int marketPrice) {
 		super();
+		this.id = id;
 		this.counterParty = counterParty;
 		this.location = location;
 		this.commodities = commodities;
 		this.marketPrice = marketPrice;
+	}
+	
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCounterParty() {

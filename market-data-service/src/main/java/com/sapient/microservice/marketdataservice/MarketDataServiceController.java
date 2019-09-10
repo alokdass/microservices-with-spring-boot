@@ -12,7 +12,7 @@ public class MarketDataServiceController {
 	PriceDaoService priceDaoService;
 	
 	@GetMapping("/price/{materialName}")
-	public Integer getprice(@PathVariable String materialName) {
+	public MarketServiceBean getprice(@PathVariable String materialName) {
 		return priceDaoService.findPriceOne(materialName);
 		
 	}
