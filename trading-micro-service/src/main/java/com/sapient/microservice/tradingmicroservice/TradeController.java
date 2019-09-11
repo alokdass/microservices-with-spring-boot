@@ -43,6 +43,7 @@ public class TradeController {
 	public Resource<TradeBeanResponse> buyTradeFeign(@RequestBody TradeBean tradeBean) {
 		tradeBean.setMarketPrice(proxy.getprice(tradeBean.getCommodities()).getMarketPrice());	
 		
+		tradeBean.setStatus("Initiated");
 		int id = tradeService.save(tradeBean);
 		
 		jmsTemplate.convertAndSend(queue, tradeBean);

@@ -2,18 +2,34 @@ package com.sapient.microservice.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //counterparties, commodities ,location and market price
+@Entity
+@Table(name = "TRADEDATA")
 public class TradeBean implements Serializable{
 	
+	@Id
+	//@GeneratedValue
 	private int id;
 	
+	@Column
 	private String counterParty;
 	
+	@Column
 	private String location;
 	
+	@Column
 	private String commodities;
 	
+	@Column
 	private int marketPrice;
+	
+	private String status;
 
 	public TradeBean() {
 		
@@ -69,12 +85,24 @@ public class TradeBean implements Serializable{
 	public void setMarketPrice(int marketPrice) {
 		this.marketPrice = marketPrice;
 	}
+	
+	
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	@Override
 	public String toString() {
 		return "TradeBean [id=" + id + ", counterParty=" + counterParty + ", location=" + location + ", commodities="
-				+ commodities + ", marketPrice=" + marketPrice + "]";
+				+ commodities + ", marketPrice=" + marketPrice + ", status=" + status + "]";
 	}
+
+	
 	
 	
 

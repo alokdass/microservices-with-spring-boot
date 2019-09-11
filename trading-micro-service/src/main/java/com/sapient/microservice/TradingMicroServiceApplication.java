@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-@EnableFeignClients("com.sapient.microservice.tradingmicroservice")
+@EnableFeignClients("com.sapient.microservice")
 @EnableDiscoveryClient
 public class TradingMicroServiceApplication {
 

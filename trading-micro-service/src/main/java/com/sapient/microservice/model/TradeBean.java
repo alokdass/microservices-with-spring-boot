@@ -14,6 +14,8 @@ public class TradeBean implements Serializable{
 	private String commodities;
 	
 	private int marketPrice;
+	
+	private String status;
 
 	public TradeBean() {
 		
@@ -68,6 +70,14 @@ public class TradeBean implements Serializable{
 
 	public void setMarketPrice(int marketPrice) {
 		this.marketPrice = marketPrice;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	
