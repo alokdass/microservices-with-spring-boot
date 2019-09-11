@@ -1,4 +1,4 @@
-package com.sapient.microservice.tradingmicroservice;
+package com.sapient.microservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

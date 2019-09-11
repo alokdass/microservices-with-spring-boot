@@ -1,7 +1,9 @@
-package com.sapient.microservice.tradingmicroservice;
+package com.sapient.microservice.model;
+
+import java.io.Serializable;
 
 //counterparties, commodities ,location and market price
-public class TradeBean {
+public class TradeBean implements Serializable{
 	
 	private int id;
 	
