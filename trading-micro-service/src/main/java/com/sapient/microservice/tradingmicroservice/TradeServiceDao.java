@@ -2,7 +2,9 @@ package com.sapient.microservice.tradingmicroservice;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,17 +20,32 @@ public class TradeServiceDao {
 		list.add(new TradeBean(++count,"Dolor","Denver","Copper",0));
 	}
 	
-	public int save(TradeBean tradeBean) {
+	public Resource<TradeBean> save(TradeBean tradeBean) {
 		if(tradeBean.getId() == 0) {
 			tradeBean.setId(++count);
 		}
 		list.add(tradeBean);
-		return tradeBean.getId();
+		
+		Resource<TradeBean> resource = new Resource<TradeBean>(tradeBean);
+		
+		ControllerLinkBuilder linkTo = linkTo(methodOn(this.getClass()).findOne(tradeBean.getId()));
+		resource.add(linkTo.withRel("link"));
+		
+		
+		return resource;
 	}
 
 	public List<TradeBean> findAll() {
 		// TODO Auto-generated method stub
 		return list;
+	}
+	
+	public TradeBean findOne(int id) {
+		for(TradeBean tradeBean: list) {
+			if(id == tradeBean.getId()) 
+				return tradeBean;
+		}
+		return null;
 	}
 
 }

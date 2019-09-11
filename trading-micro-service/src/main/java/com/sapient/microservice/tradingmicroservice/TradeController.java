@@ -3,6 +3,7 @@ package com.sapient.microservice.tradingmicroservice;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class TradeController {
 	
 	
 	@PostMapping("/trade")
-	public int buyTradeFeign(@RequestBody TradeBean tradeBean) {
+	public Resource<TradeBean> buyTradeFeign(@RequestBody TradeBean tradeBean) {
 		tradeBean.setMarketPrice(proxy.getprice(tradeBean.getCommodities()).getMarketPrice());		
 		return tradeService.save(tradeBean);
 		
