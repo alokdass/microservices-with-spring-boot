@@ -17,10 +17,17 @@ public class MessageConsumer {
     @Autowired
     private TradeDao tradeDao;
     
-    //@JmsListener(destination = "test-queue")
     @JmsListener(destination = "${jsa.activemq.queue}", containerFactory="jsaFactory")
     public void listener(TradeBean message){
         logger.info("Message received {} ", message);
         tradeDao.save(message);
+        
+        changeStatusAsProcessed(message);
+       
+    }
+    
+    private void changeStatusAsProcessed(TradeBean tradeBean) {
+    	tradeBean.setStatus("Processed");
+        tradeDao.save(tradeBean);
     }
 }
